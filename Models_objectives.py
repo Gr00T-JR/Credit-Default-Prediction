@@ -1,16 +1,21 @@
 from hyperopt import STATUS_OK
 
 import xgboost as xgb
+import pickle
 from sklearn.ensemble import AdaBoostRegressor, GradientBoostingRegressor
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
+
+with open('objs.pkl', 'rb') as f:
+    X_train_, y_train_, X_validation, y_validation = pickle.load(f)
+f.close()
 
 def objective_xgb(space):
 
     model = xgb.XGBRegressor(
         max_depth = space['max_depth'],
         gamma = space['gamma'],
-        learning_rate=space['learning_rate'] ,
+        learning_rate=space['learning_rate'],
         reg_alpha = space['reg_alpha'],
         reg_lambda=space['reg_lambda'],
         colsample_bytree=space['colsample_bytree'],
@@ -34,7 +39,7 @@ def objective_ada(space):
 
     model = AdaBoostRegressor(
         algorithm = space['algorithm'],
-        learning_rate=space['learning_rate'] ,
+        learning_rate=space['learning_rate'],
         n_estimators=space['n_estimators'],
     )
 

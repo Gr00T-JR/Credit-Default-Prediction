@@ -7,13 +7,13 @@ space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'reg_lambda' : hp.uniform('reg_lambda', 0,1),
         'colsample_bytree' : hp.uniform('colsample_bytree', 0.5,1),
         'min_child_weight' : hp.quniform('min_child_weight', 0, 10, 1),
-        'n_estimators': hp.uniform('n_estimators', 30, 150),
+        'n_estimators': hp.quniform('n_estimators', 30, 150),
         'seed': 0
     }
 
 space_ada = {'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
         'algorithm' : hp.choice('algorithm', ['SAMME', 'SAMME.R']),
-        'n_estimators': hp.uniform('n_estimators', 30, 150),
+        'n_estimators': hp.quniform('n_estimators', 30, 150),
         'seed': 0
     }
 
