@@ -12,7 +12,7 @@ space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
     }
 
 space_ada = {'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
-        'algorithm' : hp.choice('algorithm', ['SAMME', 'SAMME.R']),
+        # 'algorithm' : hp.choice('algorithm', ['SAMME', 'SAMME.R']),
         'n_estimators': hp.quniform('n_estimators', 30, 150),
         'seed': 0
     }

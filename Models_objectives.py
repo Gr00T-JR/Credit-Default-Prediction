@@ -36,9 +36,8 @@ def objective_xgb(space):
     return {'loss': -accuracy, 'status': STATUS_OK }
 
 def objective_ada(space):
-
     model = AdaBoostRegressor(
-        algorithm = space['algorithm'],
+        # algorithm = space['algorithm'],
         learning_rate=space['learning_rate'],
         n_estimators=space['n_estimators'],
     )
