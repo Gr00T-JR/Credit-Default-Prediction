@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Data Transformation \046 Exploration}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Data Cleaning}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Target Class Imbalance: Under- and Over-Sampling}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Feature Correlation Analysis}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Target Class Distribution in Most Relevant Features}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Methodology Overview}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Feature Engineering: Extracting Signal from Client Behaviour Over Time}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Feature Creation}{subsection.3.1}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Clustering Latitudinal Client Behaviour by Time-Based Features}{subsection.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Feature Reduction: Feature Selection \046 Dimensionality Reduction}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Feature Selection: Network Structure-based Feature Selection Algorithm \(NSFSA\)}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Feature Selection: Network-Based Heuristic}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Dimensionality Reduction: PCA}{subsection.3.2}% 14
+\BOOKMARK [2][-]{subsection.3.3}{Model Selection, Training, \046 Validation}{section.3}% 15
+\BOOKMARK [1][-]{section.4}{Model Training \046 Validation}{}% 16
+\BOOKMARK [1][-]{section.5}{Results}{}% 17
+\BOOKMARK [1][-]{section.6}{Final Predictions on Test Set}{}% 18
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 19

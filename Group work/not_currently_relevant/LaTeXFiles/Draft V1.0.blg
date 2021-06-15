@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Draft V1.0.aux
+The style file: abbrvnat.bst
+Database file #1: bib.bib
+Repeated entry---line 330 of file bib.bib
+ : @article{baesens2003benchmarking
+ :                                 ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "hu2009feature"
+Warning--to sort, need author or key in ukfinance
+Warning--empty year in ukfinance
+You've used 35 entries,
+            2773 wiz_defined-function locations,
+            812 strings with 11308 characters,
+and the built_in function-call counts, 17022 in all, are:
+= -- 1581
+> -- 876
+< -- 23
++ -- 299
+- -- 264
+* -- 1388
+:= -- 2530
+add.period$ -- 109
+call.type$ -- 35
+change.case$ -- 189
+chr.to.int$ -- 35
+cite$ -- 73
+duplicate$ -- 786
+empty$ -- 1458
+format.name$ -- 316
+if$ -- 3614
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 35
+newline$ -- 181
+num.names$ -- 136
+pop$ -- 372
+preamble$ -- 1
+purify$ -- 156
+quote$ -- 0
+skip$ -- 597
+stack$ -- 0
+substring$ -- 854
+swap$ -- 96
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 380
+warning$ -- 2
+while$ -- 169
+width$ -- 0
+write$ -- 459
+(There was 1 error message)
