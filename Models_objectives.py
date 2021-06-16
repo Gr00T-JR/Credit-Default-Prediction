@@ -7,11 +7,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
+# print('Importing model objectives')
+
 with open('objs.pkl', 'rb') as f:
     X_train_, y_train_, X_validation, y_validation = pickle.load(f)
 f.close()
 
-# print('importing')
+
 
 def objective_xgb(space):
 
@@ -40,9 +42,8 @@ def objective_xgb(space):
 
 def objective_ada(space):
     model = AdaBoostRegressor(
-        # algorithm = space['algorithm'],
+        loss = space['loss'],
         learning_rate=space['learning_rate'],
-        n_estimators=int(space['n_estimators']),
     )
 
     model.fit(X_train_, y_train_)
@@ -56,9 +57,8 @@ def objective_gbrt(space):
 
     model = GradientBoostingRegressor(
         max_depth = int(space['max_depth']),
-        learning_rate=space['learning_rate'] ,
+        learning_rate=space['learning_rate'],
         loss = space['loss'],
-        n_estimators=int(space['n_estimators']),
     )
 
     model.fit(X_train_, y_train_)

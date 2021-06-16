@@ -1,5 +1,7 @@
 from hyperopt import hp
 
+# print('Importing model spaces')
+
 space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'gamma': hp.uniform ('gamma', 1,9),
         'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
@@ -7,22 +9,20 @@ space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'reg_lambda' : hp.uniform('reg_lambda', 0,1),
         'colsample_bytree' : hp.uniform('colsample_bytree', 0.5,1),
         'min_child_weight' : hp.quniform('min_child_weight', 0, 10, 1),
-        'n_estimators': hp.quniform('n_estimators', 30, 150,1),
+        'n_estimators': 180,
         'seed': 0
     }
 
 
 
-space_ada = {'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
-        # 'algorithm' : hp.choice('algorithm', ['SAMME', 'SAMME.R']),
-        'n_estimators': hp.quniform('n_estimators', 30, 150, 1),
+space_ada = {'learning_rate' : hp.uniform('learning_rate', 0.005, 1),
+        'loss': hp.choice('loss', ['linear', 'square', 'exponential']),
         'seed': 0
     }
 
 space_gbrt ={'loss': hp.choice('loss', ['ls', 'lad', 'huber', 'quantile']),
         'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
-        'n_estimators': hp.uniform('n_estimators', 30, 150),
         'seed': 0
     }
 
