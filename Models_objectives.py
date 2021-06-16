@@ -21,7 +21,7 @@ def objective_xgb(space):
         learning_rate=space['learning_rate'],
         reg_alpha = int(space['reg_alpha']),
         reg_lambda=space['reg_lambda'],
-        colsample_bytree=space['colsample_bytree'],
+        colsample_bytree=int(space['colsample_bytree']),
         min_child_weight=space['min_child_weight'],
         n_estimators=int(space['n_estimators']),
     )
@@ -55,13 +55,11 @@ def objective_ada(space):
 def objective_gbrt(space):
 
     model = GradientBoostingRegressor(
-        max_depth = space['max_depth'],
+        max_depth = int(space['max_depth']),
         learning_rate=space['learning_rate'] ,
         loss = space['loss'],
         n_estimators=int(space['n_estimators']),
     )
-
-    # evaluation = [( X_train_, y_train_), ( X_validation, y_validation)]
 
     model.fit(X_train_, y_train_)
 
@@ -81,8 +79,8 @@ def objective_log(space):
 
     try :
         model.fit(X_train_, y_train_)
-    except: # in case the solver is unable to find an optimum
-        return {'loss': -10e5, 'status': STATUS_OK }
+    except: # in case the solver is unable to find an optimum (due to solver and penalty non-synergy)
+        return {'loss': 10e5, 'status': STATUS_OK }
 
     pred = model.predict(X_validation)
     accuracy = accuracy_score(y_validation, pred>0.5)
