@@ -7,10 +7,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
-# print('Importing model objectives')
 
 with open('objs.pkl', 'rb') as f:
-    X_train_, y_train_, X_validation, y_validation = pickle.load(f)
+    X_train, y_train, X_validation, y_validation = pickle.load(f)
 f.close()
 
 
@@ -28,9 +27,9 @@ def objective_xgb(space):
         n_estimators=int(space['n_estimators']),
     )
 
-    evaluation = [( X_train_, y_train_), ( X_validation, y_validation)]
+    evaluation = [( X_train, y_train), ( X_validation, y_validation)]
 
-    model.fit(X_train_, y_train_,
+    model.fit(X_train, y_train,
             eval_set=evaluation, eval_metric="auc",
             early_stopping_rounds=10,verbose=False)
 
@@ -46,7 +45,7 @@ def objective_ada(space):
         learning_rate=space['learning_rate'],
     )
 
-    model.fit(X_train_, y_train_)
+    model.fit(X_train, y_train)
 
     pred = model.predict(X_validation)
     accuracy = accuracy_score(y_validation, pred>0.5)
@@ -61,7 +60,7 @@ def objective_gbrt(space):
         loss = space['loss'],
     )
 
-    model.fit(X_train_, y_train_)
+    model.fit(X_train, y_train)
 
 
     pred = model.predict(X_validation)
@@ -78,7 +77,7 @@ def objective_log(space):
         solver=space['solver'])
 
     try :
-        model.fit(X_train_, y_train_)
+        model.fit(X_train, y_train)
     except: # in case the solver is unable to find an optimum (due to solver and penalty non-synergy)
         return {'loss': 10e5, 'status': STATUS_OK }
 
@@ -94,7 +93,7 @@ def objective_svm(space):
              degree=space['degree'])
 
 
-    model.fit(X_train_, y_train_)
+    model.fit(X_train, y_train)
 
     pred = model.predict(X_validation)
     accuracy = accuracy_score(y_validation, pred>0.5)
