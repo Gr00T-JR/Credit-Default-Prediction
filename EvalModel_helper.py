@@ -1,5 +1,4 @@
 # This function evaluates the model
-
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
@@ -47,20 +46,19 @@ def fit_Model(model, X_fitting, y_fitting, eval_metrics=False, confusion_matrix 
 
     return model
 
-# def EvalModel(model, X_train, y_train, X_test, y_test, verbose = False, confusion_matrix = False):
-#
-#     #fit model
-#     model.fit(X_train,y_train)
-#
-#     # use the model passed as a parameter to make predictions, which we will use to judge the model
-#
-#     y_predicted = model.predict(X_test).round() # require rounding for xgboost and logistic regression
-#
-#     if(confusion_matrix):
-#
-#     if(verbose):
-#         EvalMetrics(model, y_test,y_predicted)
-#     else:
-#         return metrics.accuracy_score(y_test, y_predicted)
+def modelFitEvaluation(model, X_fitting, y_fitting, eval_metrics=False, confusion_matrix = False):
+    model.fit(X_fitting ,y_fitting)
+    print(f'Performance on fitting data of model {model} \n')
+    if eval_metrics or confusion_matrix:
+        y_fitting_pred = model.predict(X_fitting ) >0.5
+        if eval_metrics:
+            EvalMetrics(y_fitting, y_fitting_pred)
+        if confusion_matrix:
+            print(f'Confusion Matrix on the fitting data')
+            ShowConfusionMatrix(y_fitting, y_fitting_pred)
+
+    return model
+
+
 
 

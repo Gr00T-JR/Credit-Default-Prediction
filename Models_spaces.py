@@ -1,8 +1,8 @@
 from hyperopt import hp
 
-# print('Importing model spaces')
-
-space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
+xgb_fitting_setting = {'eval_set':'', 'eval_metric':'auc', 'early_stopping_rounds':10, 'verbose':False}
+xgb_int_keys = ['max_depth', 'reg_alpha', 'min_child_weight']
+xgb_space ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'gamma': hp.uniform ('gamma', 1,9),
         'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
         'reg_alpha' : hp.quniform('reg_alpha', 40,180,1),
@@ -14,26 +14,34 @@ space_xgb ={'max_depth': hp.quniform("max_depth", 3, 18, 1),
     }
 
 
-
-space_ada = {'learning_rate' : hp.uniform('learning_rate', 0.005, 1),
-        'loss': hp.choice('loss', ['linear', 'square', 'exponential']),
-        'seed': 0
+ada_loss_functions = ['linear', 'square', 'exponential']
+ada_space = {'learning_rate' : hp.uniform('learning_rate', 0.005, 1),
+        'loss': hp.choice('loss', ada_loss_functions),
+        'random_state': 0
     }
 
-space_gbrt ={'loss': hp.choice('loss', ['ls', 'lad', 'huber', 'quantile']),
+
+gbrt_loss_functions = ['ls', 'lad', 'huber', 'quantile']
+gbrt_int_keys = ['max_depth']
+gbrt_space ={'loss': hp.choice('loss', gbrt_loss_functions),
         'max_depth': hp.quniform("max_depth", 3, 18, 1),
         'learning_rate' : hp.uniform('learning_rate', 0.005, 0.5),
-        'seed': 0
+        'random_state': 0
     }
 
-space_log ={'penalty': hp.choice('penalty', ['l1', 'l2', 'elasticnet']),
+
+log_penalties = ['l1', 'l2', 'elasticnet']
+log_solvers = ['liblinear', 'saga']
+log_space ={'penalty': hp.choice('penalty', ['l1', 'l2', 'elasticnet']),
         'C': hp.uniform("C", 0.01, 1),
-        'solver' : hp.choice('solver', ['liblinear', 'saga']),
-        'seed': 0
+        'solver' : hp.choice('solver', log_solvers),
+        'random_state': 0
     }
 
-space_svm ={'C': hp.uniform("C", 0.01, 1),
-        'kernel' : hp.choice('kernel', ['poly', 'rbf']),
-        'degree' :hp.choice('degree', [2, 3, 4]),
-        'seed': 0
+svm_kernels = ['poly', 'rbf']
+svm_kernel_degrees = [2, 3, 4]
+svm_space ={'C': hp.uniform("C", 0.01, 1),
+        'kernel' : hp.choice('kernel', svm_kernels),
+        'degree' :hp.choice('degree', svm_kernel_degrees),
+        'random_state': 0
     }
