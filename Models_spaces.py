@@ -30,11 +30,13 @@ gbrt_space ={'loss': hp.choice('loss', gbrt_loss_functions),
     }
 
 
-log_penalties = ['l1', 'l2', 'elasticnet']
-log_solvers = ['liblinear', 'saga']
-log_space ={'penalty': hp.choice('penalty', ['l1', 'l2', 'elasticnet']),
+log_penalties = ['elasticnet']
+log_solvers = ['saga']
+log_space ={'penalty': hp.choice('penalty', log_penalties),
         'C': hp.uniform("C", 0.01, 1),
         'solver' : hp.choice('solver', log_solvers),
+        'l1_ratio' : hp.uniform('l1_ratio', 0,1),
+        'max_iter' : 5000,
         'random_state': 0
     }
 
