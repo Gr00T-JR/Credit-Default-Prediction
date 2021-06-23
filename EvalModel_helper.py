@@ -3,14 +3,14 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 
-def ShowConfusionMatrix(y_true ,y_predicted):
+def showConfusionMatrix(y_true ,y_predicted):
     """
     returns confusion matrix with the true y values and predicted y values
     """
     cm = confusion_matrix(y_true ,y_predicted)
     ConfusionMatrixDisplay(cm).plot()
 
-def EvalMetrics(y_true ,y_predicted, confusion_matrix=False):
+def evalMetrics(y_true,y_predicted, confusion_matrix=False):
 
     # metrics used here are: Accuracy, Recall, Precision, ROC/AUC and F1.
     # these are the industry standard and provide a proper, unbiased benchmark for models.
@@ -30,21 +30,23 @@ def EvalMetrics(y_true ,y_predicted, confusion_matrix=False):
 
     if confusion_matrix:
         print(f'Confusion Matrix with the true and predicted data')
-        ShowConfusionMatrix(y_true, y_predicted)
+        showConfusionMatrix(y_true, y_predicted)
+
+    return accuracy_score
 
 
-def fit_Model(model, X_fitting, y_fitting, eval_metrics=False, confusion_matrix = False):
-    model.fit(X_fitting ,y_fitting)
-    print(f'Performance on fitting data of model {model} \n')
+def fitModel(tuned_model, X_fitting, y_fitting, eval_metrics=False, confusion_matrix = False):
+    tuned_model.fit(X_fitting ,y_fitting)
+    print(f'Performance on fitting data of tuned_model {tuned_model} \n')
     if eval_metrics or confusion_matrix:
-        y_fitting_pred = model.predict(X_fitting ) >0.5
+        y_fitting_pred = tuned_model.predict(X_fitting ) >0.5
         if eval_metrics:
-            EvalMetrics(y_fitting, y_fitting_pred)
+            evalMetrics(y_fitting, y_fitting_pred)
         if confusion_matrix:
             print(f'Confusion Matrix on the fitting data')
-            ShowConfusionMatrix(y_fitting, y_fitting_pred)
+            showConfusionMatrix(y_fitting, y_fitting_pred)
 
-    return model
+    return tuned_model
 
 def modelFitEvaluation(model, X_fitting, y_fitting, eval_metrics=False, confusion_matrix = False):
     model.fit(X_fitting ,y_fitting)
