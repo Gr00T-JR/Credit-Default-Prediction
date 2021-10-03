@@ -1,6 +1,6 @@
 # Credit-Default-Prediction
 
-__Abstract:__ This project considers how KFold and a fixed train-validation affects the performance of the scikit-learn
+__Abstract:__ This project considers how 4KFold and a fixed train-validation affects the performance of the scikit-learn
 estimator *AdaBoostRegressor* on a credit card default dataset. The dataset consists of 30,000 labelled points with 23
 features. The Hyperopt optimization framework is used with 30 search iterations for hyperparameters per optimization.
 Ten simulations found model tuning using KFold is higher than a fixed train-validation, set at a p-value
